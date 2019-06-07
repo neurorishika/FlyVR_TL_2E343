@@ -89,7 +89,7 @@ def move_to_nearest(dev,current,end):
         
         
 def main(trial):
-    hs = open("log.csv","a")
+    hs = open("log"+str(trial)+".csv","a")
 
     dev = ModularClient(port='COM10') # Windows specific port
     # dev.get_device_id()
@@ -98,7 +98,7 @@ def main(trial):
     dev.acceleration_max('setValue',[1500]) # 6/8 s to accerelate to max 
 
     dev.move_to(0,-32)
-    time.sleep(2)
+    time.sleep(5)
     
     # Open the shared memory region for accessing FicTrac's state
     shmem = mmap.mmap(-1, ctypes.sizeof(SHMEMFicTracState), "FicTracStateSHMEM")
@@ -119,7 +119,7 @@ def main(trial):
     
     try:
         start = time.time()
-        while time.time()-start<30:
+        while time.time()-start<60:
             # continuous reading
             position_value = dev.get_positions()
             old_nozzle_position = position_value[0]
@@ -152,12 +152,11 @@ def main(trial):
             old_frame_count = new_frame_count
             state_string = str(new_nozzle_position) + "\t" + str(new_posy*4.5) + "\t" + str(new_corridor_id) + "\t" + str(switch_posy*4.5) + "\t"
             
-            hs.write("{:0.3f},{:0.3f},{:0.3f},{:0.3f},{:0.3f}\n".format(time.time(),fictrac_state.heading*180/math.pi,dev.get_positions()[0],fictrac_state.posx,fictrac_state.posy))
+            hs.write("{:0.3f},{:0.3f},{:0.3f},{:0.3f},{:0.3f}\n".format(time.time()-start,fictrac_state.heading*180/math.pi,dev.get_positions()[0],fictrac_state.posx,fictrac_state.posy))
             
             print(state_string)
             
         print("Sending stop signal (over shared memory) to FicTrac process ... ")
-        fictrac_signals.send_close()
         # close the odor nozzle controller
         dev.move_to(0,-32)
         time.sleep(5)
@@ -175,7 +174,7 @@ def main(trial):
             
 
 if __name__ == "__main__":
-    n_trials = 10
+    n_trials = 20
     for t in range(n_trials):
         print("Trial:",t)
         main(t)
