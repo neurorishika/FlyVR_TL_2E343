@@ -64,11 +64,11 @@ for i = 0:totalLedPulses
    ledTrigger(preLedDelay+2*i*ledPulseWidth*sampleRate:preLedDelay+2*i*ledPulseWidth*sampleRate+ledPulseWidth*sampleRate) = ledIntensity*ones; 
 end
 
-%plot(cameraTrigger);hold on;
-%plot(odorTrigger);hold on;
-%plot(ledTrigger);
+plot(cameraTrigger);hold on;
+plot(odorTrigger);hold on;
+plot(ledTrigger);
 
-queueOutputData(Session,[ledTrigger cameraTrigger]);
+queueOutputData(Session,[ledTrigger odorTrigger]);
 startForeground(Session);
 
 

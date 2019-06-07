@@ -3,7 +3,7 @@ input_vid_fn		0
 output_fn           .\fictrac_test.txt
 mask_fn             .\mask.png
 transform_fn        .\transform.dat
-load_template       0
+load_template       1
 do_config           0
 
 %% camera parameters %%
@@ -19,7 +19,7 @@ frame_skip          0
 frame_step          1
 do_display          1
 no_prompts          1
-fps                 -1
+fps                 100
 do_led_display      0
 
 %% search behaviour %%

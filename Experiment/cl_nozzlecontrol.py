@@ -64,7 +64,7 @@ def print_fictrac_state(data):
     
 def transform_angle(fictrac_heading):    
     nozzle_home_angle = -32 # angle between nozzle home and the orientation of fly, clockwise as positive
-    nozzle_position = 360 + fictrac_heading*180/math.pi + nozzle_home_angle # transform to degree and compensate 
+    nozzle_position = 360 - fictrac_heading*180/math.pi + nozzle_home_angle # transform to degree and compensate 
     if nozzle_position > 360:
         nozzle_position = nozzle_position - 360
     return nozzle_position
@@ -79,14 +79,23 @@ def get_corridor(fictrac_posy):
         corridor_id = 0 # input to shuttle valve control
     return corridor_id
 
+def move_to_nearest(dev,current,end):
+    current = current%360
+    end = end%360
+    if (max(end,current)-min(end,current))<360-(max(end,current)-min(end,current)):
+        dev.move_by(0,(end-current))
+    else:
+        dev.move_by(0,math.copysign(360-(max(end,current)-min(end,current)),-end+current))
+        
+        
 def main():
-
+    hs = open("log.csv","a")
 
     dev = ModularClient(port='COM10') # Windows specific port
     # dev.get_device_id()
     # dev.get_methods()
-    dev.velocity_max('setValue',[500]) # about 0.25 s per turn (1536/6000)
-    dev.acceleration_max('setValue',[500]) # 6/8 s to accerelate to max 
+    dev.velocity_max('setValue',[1500]) # about 0.25 s per turn (1536/6000)
+    dev.acceleration_max('setValue',[1500]) # 6/8 s to accerelate to max 
 
     dev.move_to(0,-32)
     time.sleep(2)
@@ -107,7 +116,7 @@ def main():
     switch_posy = fictrac_state.posy
     
     print("Waiting for FicTrac updates in shared memory. Press Ctrl-C to stop reading and send close signal to FicTrac process.")
-
+    
     try:
         while True:
 
@@ -116,6 +125,12 @@ def main():
             old_nozzle_position = position_value[0]
             new_frame_count = fictrac_state.frame_cnt
             new_heading = fictrac_state.heading
+            
+            #if old_heading - new_heading > math.pi:
+            #    new_heading = 2*math.pi+math.ceil(old_heading/(2*math.pi)) + new_heading
+            #elif old_heading - new_heading < -180:
+            #    new_heading = 2*math.pi+math.floor(old_heading/(2*math.pi)) - (2*math.pi - new_heading)
+            
             new_nozzle_position = transform_angle(new_heading)#regular script
             #new_nozzle_position = new_nozzle_position/10#testing
             new_posy = fictrac_state.posy
@@ -126,22 +141,22 @@ def main():
             
                 
             # move the nozzle
-            #if new_nozzle_position < 270:
-            #    new_nozzle_position = new_nozzle_position
-            #elif old_nozzle_position < 135:
-            #    new_nozzle_position = 0
-            #else:
-            #    new_nozzle_position = 270
             #dev.move_to(0,new_nozzle_position)
-            dev.move_by(0,new_nozzle_position-old_nozzle_position)
+            move_to_nearest(dev,dev.get_positions()[0],new_nozzle_position)
+            #dev.move_by(0,int(180/math.pi*(new_heading-old_heading)))
+            
             
             # update the status
             old_heading = new_heading
             old_nozzle_position = new_nozzle_position
             old_frame_count = new_frame_count
             state_string = str(new_nozzle_position) + "\t" + str(new_posy*4.5) + "\t" + str(new_corridor_id) + "\t" + str(switch_posy*4.5) + "\t"
+            
+            hs.write("{:0.3f},{:0.3f}\n".format(fictrac_state.heading,dev.get_positions()[0]))
+            
             print(state_string)
-            # print_fictrac_state(fictrac_state)
+            #print(fictrac_state.heading*180/math.pi,(dev.get_positions()[0]-32)%360)
+            #print_fictrac_state(fictrac_state)
             
     except KeyboardInterrupt:
             print("Sending stop signal (over shared memory) to FicTrac process ... ")
@@ -150,6 +165,7 @@ def main():
             dev.move_to(0,-32)
             time.sleep(0.5)
             dev.close()
+            hs.close()
             del dev
             
 
