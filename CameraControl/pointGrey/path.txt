@@ -1,0 +1,5 @@
+C:\Program Files\Point Grey Research\FlyCapture2\bin64
+
+
+FlyCapture_2 installed
+FlyCapture_2.10.3.266_x64.exe

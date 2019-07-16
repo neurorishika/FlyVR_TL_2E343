@@ -1,0 +1,2 @@
+C:\Data_fictrac\CameraControl\BIAS_V0P49\bias_test_gui_v0p49\bias_gui_v049.exe
+exit

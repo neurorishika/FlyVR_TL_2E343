@@ -1,0 +1,181 @@
+
+type:             Brightness
+present:          true
+absoluteControl:  false
+onePush:          false
+on:               true
+autoActive:       false
+value:            16
+absoluteValue:    1.5625
+
+
+type:             Auto Exposure
+present:          true
+absoluteControl:  true
+onePush:          false
+on:               true
+autoActive:       false
+value:            256
+absoluteValue:    0.415039
+
+
+type:             Sharpness
+present:          true
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            1024
+absoluteValue:    0
+
+
+type:             White Balance
+present:          false
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value Red:        0
+value Blue:       0
+absoluteValue:    0
+
+
+type:             Hue
+present:          false
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            0
+absoluteValue:    0
+
+
+type:             Saturation
+present:          false
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            0
+absoluteValue:    0
+
+
+type:             Gamma
+present:          true
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            1024
+absoluteValue:    1
+
+
+type:             Iris
+present:          false
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            0
+absoluteValue:    0
+
+
+type:             Focus
+present:          false
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            0
+absoluteValue:    0
+
+
+type:             Zoom
+present:          false
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            0
+absoluteValue:    0
+
+
+type:             Pan
+present:          false
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            0
+absoluteValue:    0
+
+
+type:             Tilt
+present:          false
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            0
+absoluteValue:    0
+
+
+type:             Shutter
+present:          true
+absoluteControl:  true
+onePush:          false
+on:               true
+autoActive:       false
+value:            307
+absoluteValue:    1.96117
+
+
+type:             Gain
+present:          true
+absoluteControl:  true
+onePush:          false
+on:               true
+autoActive:       false
+value:            305
+absoluteValue:    18.0566
+
+
+type:             Trigger Mode
+present:          true
+absoluteControl:  false
+onePush:          false
+on:               true
+autoActive:       false
+value:            0
+absoluteValue:    0
+
+
+type:             Trigger Delay
+present:          true
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            59
+absoluteValue:    2.38419e-006
+
+
+type:             Frame Rate
+present:          true
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            480
+absoluteValue:    150
+
+
+type:             Temperature
+present:          true
+absoluteControl:  false
+onePush:          false
+on:               false
+autoActive:       false
+value:            3128
+absoluteValue:    3.12785
+

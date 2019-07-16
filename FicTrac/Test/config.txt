@@ -1,6 +1,6 @@
 %% input files and control parameters%%
 input_vid_fn		0
-output_fn           .\fictrac_test.txt
+output_fn           .\fictrac_test.csv
 mask_fn             .\mask.png
 transform_fn        .\transform.dat
 load_template       1
@@ -9,7 +9,7 @@ do_config           0
 %% camera parameters %%
 fisheye             0
 cam_input           1
-cam_index           0
+cam_index           2
 vfov                3.085
 sphere_centre_px    575 420
 sphere_radius_px    300
@@ -17,9 +17,9 @@ sphere_radius_px    300
 %% playback/display options %%
 frame_skip          0
 frame_step          1
-do_display          1
+do_display          0
 no_prompts          1
-fps                 100
+fps                 50
 do_led_display      0
 
 %% search behaviour %%
@@ -35,7 +35,7 @@ max_bad_frames      1
 
 %% output options %%
 do_update           1
-save_video          1
+save_video          0
 save_input_video    1
 do_serial_out       0
 serial_baud         115200

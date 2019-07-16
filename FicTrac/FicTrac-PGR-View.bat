@@ -1,0 +1,1 @@
+C:\FlyVR_TL_2E343\FicTrac\Bin\FicTrac-PGR.exe C:\FlyVR_TL_2E343\FicTrac\Alt\config.txt
