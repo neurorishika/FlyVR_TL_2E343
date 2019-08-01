@@ -4,10 +4,10 @@
             "mode" : "0",
             "pixelFormat" : "MONO8",
             "roi" : {
-                "height" : 640,
-                "offsetX" : 620,
-                "offsetY" : 388,
-                "width" : 640 
+                "height" : 894,
+                "offsetX" : 228,
+                "offsetY" : 198,
+                "width" : 1408 
             }
         },
         "frameRate" : "Format7",
@@ -16,12 +16,12 @@
         "properties" : {
             "autoExposure" : {
                 "absoluteControl" : false,
-                "absoluteValue" : -0.884521484375,
+                "absoluteValue" : -0.03033447265625,
                 "autoActive" : true,
                 "on" : true,
                 "onePush" : false,
                 "present" : true,
-                "value" : 104 
+                "value" : 188 
             },
             "brightness" : {
                 "absoluteControl" : true,
@@ -43,12 +43,12 @@
             },
             "frameRate" : {
                 "absoluteControl" : true,
-                "absoluteValue" : 50.0,
+                "absoluteValue" : 60.0,
                 "autoActive" : false,
                 "on" : true,
                 "onePush" : false,
                 "present" : true,
-                "value" : 672 
+                "value" : 480 
             },
             "gain" : {
                 "absoluteControl" : false,
@@ -115,21 +115,21 @@
             },
             "shutter" : {
                 "absoluteControl" : false,
-                "absoluteValue" : 19.9884185791015625,
+                "absoluteValue" : 16.650140762329101562,
                 "autoActive" : true,
                 "on" : true,
                 "onePush" : false,
                 "present" : true,
-                "value" : 1934 
+                "value" : 1611 
             },
             "temperature" : {
                 "absoluteControl" : false,
-                "absoluteValue" : 3.1734750270843505859,
+                "absoluteValue" : 3.2040998935699462891,
                 "autoActive" : false,
                 "on" : false,
                 "onePush" : false,
                 "present" : true,
-                "value" : 3174 
+                "value" : 3204 
             },
             "tilt" : {
                 "absoluteControl" : false,
