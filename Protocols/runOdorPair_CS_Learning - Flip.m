@@ -157,7 +157,7 @@ for block = 1:nBlocks
         pause(initDelay/sampleRate+CSpWait);
         toc
         diff =(toc- initDelay/sampleRate-CSpWait);
-        outputSingleScan(valvedio,stateOCT);
+        outputSingleScan(valvedio,stateMCH);
         fprintf('CS+ on\n');
         pause(CSpLength-diff);
         toc
@@ -167,7 +167,7 @@ for block = 1:nBlocks
         pause(CSmWait-diff);
         toc
         diff =(toc- initDelay/sampleRate-CSpWait-CSpLength-CSmWait);
-        outputSingleScan(valvedio,stateMCH);
+        outputSingleScan(valvedio,stateOCT);
         fprintf('CS- on\n');
         pause(CSmLength-diff);
         toc
